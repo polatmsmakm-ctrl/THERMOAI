@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  THERMO AI — Info.plist
+  File: THERMOAI/Config/Info.plist
+  Merge these keys into the target's Info (Xcode may generate the standard
+  CFBundle* keys automatically when GENERATE_INFOPLIST_FILE = YES).
+-->
+<plist version="1.0">
+<dict>
+	<key>SUPABASE_URL</key>
+	<string>$(SUPABASE_URL)</string>
+	<key>SUPABASE_ANON_KEY</key>
+	<string>$(SUPABASE_ANON_KEY)</string>
+	<key>PRO_MONTHLY_PRODUCT_ID</key>
+	<string>$(PRO_MONTHLY_PRODUCT_ID)</string>
+	<key>PRO_YEARLY_PRODUCT_ID</key>
+	<string>$(PRO_YEARLY_PRODUCT_ID)</string>
+
+	<key>NSCameraUsageDescription</key>
+	<string>THERMO AI uses the camera to photograph meals so it can identify foods and estimate their nutrition.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>THERMO AI lets you choose meal photos from your library for nutrition analysis.</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>THERMO AI reads your weight, height, body fat and active energy to personalise your metabolic targets.</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>THERMO AI can save the meals and weight you log to Apple Health.</string>
+
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.example.thermoai.auth</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>thermoai</string>
+			</array>
+		</dict>
+	</array>
+
+	<key>UIUserInterfaceStyle</key>
+	<string>Dark</string>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIColorName</key>
+		<string>LaunchBackground</string>
+	</dict>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+</dict>
+</plist>

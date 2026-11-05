@@ -1,0 +1,6 @@
+.DS_Store
+build/
+*.xcodeproj
+Secrets.xcconfig
+backend/supabase/.env
+backend/supabase/secrets.env

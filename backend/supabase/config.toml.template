@@ -1,0 +1,43 @@
+# =============================================================================
+# THERMO AI — Supabase project configuration template
+# File: backend/supabase/config.toml.template
+# Copy to backend/supabase/config.toml (or merge into the file `supabase init` creates).
+# Contains NO secrets.
+# =============================================================================
+
+project_id = "thermo-ai"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[db]
+port = 54322
+major_version = 17
+
+[auth]
+enabled = true
+site_url = "thermoai://auth-callback"
+additional_redirect_urls = ["thermoai://auth-callback"]
+jwt_expiry = 3600
+enable_refresh_token_rotation = true
+refresh_token_reuse_interval = 10
+enable_signup = true
+minimum_password_length = 8
+
+[auth.email]
+enable_signup = true
+double_confirm_changes = true
+enable_confirmations = true
+
+# Sign in with Apple (native id_token flow). Client ID = the iOS bundle identifier.
+[auth.external.apple]
+enabled = true
+client_id = "com.example.thermoai"
+secret = ""   # not required for the native id_token flow
+
+[functions.gemini-proxy]
+verify_jwt = true

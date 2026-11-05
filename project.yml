@@ -1,0 +1,57 @@
+name: THERMOAI
+options:
+  bundleIdPrefix: com.rashid
+  deploymentTarget:
+    iOS: "18.0"
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    SWIFT_STRICT_CONCURRENCY: complete
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "1"
+targets:
+  THERMOAI:
+    type: application
+    platform: iOS
+    sources:
+      - path: THERMOAI
+        excludes:
+          - "Resources/*.md"
+          - "Config/Info.plist"
+          - "Config/Secrets.xcconfig.template"
+          - "Config/THERMOAI.entitlements"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.rashid.thermoai
+        PRODUCT_NAME: THERMOAI
+        TARGETED_DEVICE_FAMILY: "1,2"
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_FILE: THERMOAI/Config/Info.plist
+        INFOPLIST_KEY_CFBundleDisplayName: THERMO AI
+        INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.healthcare-fitness
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        SUPABASE_URL: "https:/$()/placeholder.supabase.co"
+        SUPABASE_ANON_KEY: "placeholder-anon-key"
+        PRO_MONTHLY_PRODUCT_ID: com.rashid.thermoai.pro.monthly
+        PRO_YEARLY_PRODUCT_ID: com.rashid.thermoai.pro.yearly
+  THERMOAITests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: [THERMOAITests]
+    dependencies:
+      - target: THERMOAI
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: com.rashid.thermoai.tests
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/THERMOAI.app/THERMOAI"
+        BUNDLE_LOADER: "$(TEST_HOST)"
+schemes:
+  THERMOAI:
+    build:
+      targets:
+        THERMOAI: all
+    test:
+      targets: [THERMOAITests]
