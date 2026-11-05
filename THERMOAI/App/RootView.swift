@@ -30,9 +30,8 @@ struct RootView: View {
             switch env.auth.state {
             case .restoring:
                 SplashView().transition(.opacity)
-            case .signedOut, .awaitingEmailConfirmation:
-                AuthView().transition(.opacity)
-            case .signedIn:
+            case .signedOut, .awaitingEmailConfirmation, .signedIn:
+                // Sign-in screen removed: the app runs in local mode without an account.
                 if let profile = profiles.first, profile.onboardingCompleted {
                     MainTabView().transition(.opacity)
                 } else {
@@ -45,8 +44,7 @@ struct RootView: View {
     private var routeKey: String {
         switch env.auth.state {
         case .restoring: "restoring"
-        case .signedOut, .awaitingEmailConfirmation: "auth"
-        case .signedIn: (profiles.first?.onboardingCompleted ?? false) ? "main" : "onboarding"
+        case .signedOut, .awaitingEmailConfirmation, .signedIn: (profiles.first?.onboardingCompleted ?? false) ? "main" : "onboarding"
         }
     }
 }

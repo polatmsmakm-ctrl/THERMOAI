@@ -84,14 +84,14 @@ final class AppEnvironment {
                 await subscriptions.refreshEntitlements()   // reports active subscriptions to the server
             }
         } else {
+            // Local mode (no account): keep local data, just stop syncing.
             sync = nil
             subscriptions.serverClient = nil
-            wipeLocalData()
         }
     }
 
-    /// Removes all local data on sign-out so the next account starts clean.
-    private func wipeLocalData() {
+    /// Removes all local data (unused in local mode) so the next account starts clean.
+    func wipeLocalData() {
         let context = container.mainContext
         try? context.delete(model: FoodEntry.self)
         try? context.delete(model: WeightEntry.self)

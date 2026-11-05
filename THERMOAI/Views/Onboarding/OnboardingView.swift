@@ -238,8 +238,17 @@ struct OnboardingView: View {
         }
     }
 
+    /// Stable on-device ID used when there is no signed-in account.
+    private static var localUserID: UUID {
+        let key = "thermoai.localUserID"
+        if let s = UserDefaults.standard.string(forKey: key), let id = UUID(uuidString: s) { return id }
+        let id = UUID()
+        UserDefaults.standard.set(id.uuidString, forKey: key)
+        return id
+    }
+
     private func finish(_ vm: OnboardingViewModel) {
-        guard let userID = env.auth.currentUserID else { return }
+        let userID = env.auth.currentUserID ?? Self.localUserID
         do {
             try vm.complete(in: context, userID: userID, healthEnabled: healthEnabled)
             Task { await env.sync?.syncNow() }

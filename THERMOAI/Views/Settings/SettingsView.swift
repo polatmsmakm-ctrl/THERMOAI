@@ -59,6 +59,7 @@ struct SettingsView: View {
             }
             .listRowBackground(Theme.Colors.surface)
 
+            if env.auth.currentUserID != nil {
             Section("Account") {
                 if let email = env.auth.session?.user.email {
                     LabeledContent("Email", value: email)
@@ -69,6 +70,7 @@ struct SettingsView: View {
                 Button("Delete account", role: .destructive) { confirmDelete = true }
             }
             .listRowBackground(Theme.Colors.surface)
+            }
 
             Section {
                 Text("THERMO AI provides estimates for general wellness. It is not a medical device and does not provide medical advice. Consult a healthcare professional before making significant dietary changes.")
